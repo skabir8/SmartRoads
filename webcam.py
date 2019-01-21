@@ -37,9 +37,8 @@ argparser.add_argument(
 #cap = cv2.VideoCapture(0)
 
 def _main_(args):
-    config_path  = args.conf
-    weights_path = args.weights
-    image_path   = args.input
+    config_path  = "/home/shariar/Desktop/potholes-detection/config.json"
+    weights_path = "/home/shariar/Desktop/potholes-detection/trained_wts.h5"
 
 
     with open(config_path) as config_buffer:
@@ -48,7 +47,7 @@ def _main_(args):
     ###############################
     #   Make the model
     ###############################
-    yolo = YOLO(backend             = config['model']['architecture'],
+    yolo = YOLO(backend             = "Full Yolo",
                 input_size          = config['model']['input_size'],
                 labels              = config['model']['labels'],
                 max_box_per_image   = config['model']['max_box_per_image'],
