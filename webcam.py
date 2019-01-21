@@ -37,8 +37,8 @@ argparser.add_argument(
 #cap = cv2.VideoCapture(0)
 
 def _main_(args):
-    config_path  = "/home/shariar/Desktop/potholes-detection/config.json"
-    weights_path = "/home/shariar/Desktop/potholes-detection/trained_wts.h5"
+    config_path  = "./config.json"
+    weights_path = "./trained_wts.h5"
 
 
     with open(config_path) as config_buffer:
