@@ -10,7 +10,7 @@ from utils import draw_boxes
 from frontend import YOLO
 import json
 from pprint import pprint
-
+import time
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
@@ -62,24 +62,30 @@ def _main_(args):
     ###############################
     #   Predict bounding boxes
     ###############################
-
+    last_recorded_time = time.time()
     while True:
         # Capture frame-by-frame
+        curr_time = time.time()
         ret, frame = cap.read()
-
-        # Our operations on the frame come here
-        boxes = yolo.predict(frame)
-
-        print(dir(boxes))
-
-        frame2 = draw_boxes(frame, boxes, config['model']['labels'])
-        # Display the resulting frame
-        cv2.imshow('', frame2)
-
+        if curr_time - last_recorded_time >= 2.0:
+            cv2.imshow('', frame)
+            boxes = yolo.predict(frame)
+            if (len(boxes) > 0):
+                b = boxes[0]
+                s = b.get_score()
+                data = [b.c, b.score, s]
+                pprint(data)
+            frame2 = draw_boxes(frame, boxes, config['model']['labels'])
+            # Display the resulting frame
+            cv2.imshow('', frame2)
+            last_recorded_time = curr_time
+        else:
+            cv2.imshow('', frame)
+            boxes = yolo.predict(frame)
+            frame2 = draw_boxes(frame, boxes, config['model']['labels'])
+            cv2.imshow('', frame2)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-
-    # When everything done, release the capture
     cap.release()
     cv2.destroyAllWindows()
 
