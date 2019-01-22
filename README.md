@@ -19,7 +19,7 @@ sudo apt-get install python3-tk
 ### Downloading weights
 Download the weights from: https://drive.google.com/drive/folders/1npRY7FVNTBUodMt-qD67A1rlCXYoMFMp and place into app/utils
 
-### Running app
+### Running app - Using webcam (or any camera on device being used)
 ```
 python3 app.py
 ```
