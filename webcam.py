@@ -9,6 +9,7 @@ from utils import draw_boxes
 from frontend import YOLO
 import json
 from pprint import pprint
+import time
 
 cap = cv2.VideoCapture(0)
 
