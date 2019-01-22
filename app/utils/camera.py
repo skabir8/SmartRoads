@@ -37,16 +37,19 @@ class VideoCamera(object):
         self.cap.release()
 
     def get_frame(self):
+        self.curr_time = time.time()
 
         ret, frame = self.cap.read()
 
         if ret:
             ret, jpeg = cv2.imencode('.jpg', frame)
             boxes = self.yolo.predict(frame)
-
+            frame2 = draw_boxes(frame, boxes, self.config['model']['labels'])
+            self.last_recorded_time = self.curr_time
             if (len(boxes) > 0):
                 print(boxes[0].get_score())
-
+                ret, jpeg = cv2.imencode('.jpg', frame2)
+                return jpeg.tobytes()
             return jpeg.tobytes()
 
         else:
