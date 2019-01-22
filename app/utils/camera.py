@@ -10,8 +10,9 @@ class VideoCamera(object):
     def __init__(self):
 
         # Open a camera
-
         self.cap = cv2.VideoCapture(0)
+
+        # Config paths
         self.config_path  = "./utils/config.json"
         self.weights_path = "./utils/weights.h5"
 
@@ -19,19 +20,21 @@ class VideoCamera(object):
             self.config = json.load(config_buffer)
 
         self.yolo = YOLO(backend             = self.config['model']['backend'],
-                    input_size          = self.config['model']['input_size'],
-                    labels              = self.config['model']['labels'],
-                    max_box_per_image   = self.config['model']['max_box_per_image'],
-                    anchors             = self.config['model']['anchors'])
-
+                        input_size          = self.config['model']['input_size'],
+                        labels              = self.config['model']['labels'],
+                        max_box_per_image   = self.config['model']['max_box_per_image'],
+                        anchors             = self.config['model']['anchors'])
         self.yolo.load_weights(self.weights_path)
 
         # Initialize video recording environment
-        self.is_record = False
-        self.out = None
         self.last_recorded_time = time.time()
+
         # Thread for recording
         self.recordingThread = None
+
+        # Reporting Variables
+        self.report_interval = 5.0
+        self.conf_threshold = 0.4
 
     def __del__(self):
         self.cap.release()
