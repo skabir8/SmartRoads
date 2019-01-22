@@ -2,14 +2,11 @@
 
 import os
 import cv2
-import numpy as np
-from tqdm import tqdm
-from preprocessing import parse_annotation
 from utils import draw_boxes
 from frontend import YOLO
 import json
-from pprint import pprint
 import time
+from pprint import pprint
 
 cap = cv2.VideoCapture(0)
 
