@@ -2,7 +2,7 @@
 
 ## Demo
 
-<p align="center"> <img src="https://puu.sh/CAtwL/7193aa335c.gif"/> </p>
+<p align="center"> <img src="demo.gif"/> </p>
 
 ## Running app
 
