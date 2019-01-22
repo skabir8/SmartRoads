@@ -18,15 +18,17 @@ class VideoCamera(object):
         with open(self.config_path) as config_buffer:
             self.config = json.load(config_buffer)
 
-        yolo = YOLO(backend             = self.config['model']['backend'],
+        self.yolo = YOLO(backend             = self.config['model']['backend'],
                     input_size          = self.config['model']['input_size'],
                     labels              = self.config['model']['labels'],
                     max_box_per_image   = self.config['model']['max_box_per_image'],
                     anchors             = self.config['model']['anchors'])
+
+        self.yolo.load_weights(self.weights_path)
+
         # Initialize video recording environment
         self.is_record = False
         self.out = None
-        yolo.load_weights(weights_path)
         self.last_recorded_time = time.time()
         # Thread for recording
         self.recordingThread = None
@@ -40,9 +42,10 @@ class VideoCamera(object):
 
         if ret:
             ret, jpeg = cv2.imencode('.jpg', frame)
+            boxes = self.yolo.predict(frame)
 
-            # Record video
-
+            if (len(boxes) > 0):
+                print(boxes[0].get_score())
 
             return jpeg.tobytes()
 
