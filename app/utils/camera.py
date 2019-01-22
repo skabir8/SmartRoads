@@ -32,6 +32,10 @@ class VideoCamera(object):
         # Thread for recording
         self.recordingThread = None
 
+        # Reporting Variables
+        self.report_interval = 5.0
+        self.conf_threshold = 0.4
+
     def __del__(self):
         self.cap.release()
 
@@ -49,7 +53,7 @@ class VideoCamera(object):
                 frame2 = draw_boxes(frame, boxes, self.config['model']['labels'])
                 ret, jpeg = cv2.imencode('.jpg', frame2)
 
-                if self.curr_time - self.last_recorded_time >= 5.0 and boxes[0].get_score() >= .4:
+                if self.curr_time - self.last_recorded_time >= self.report_interval and boxes[0].get_score() >= self.conf_threshold:
                     print(boxes[0].get_score())
                     self.last_recorded_time = self.curr_time
 
