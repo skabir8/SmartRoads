@@ -11,7 +11,7 @@
 virtualenv -p python3 venv
 . venv/bin/activate
 git clone git@github.com:skabir8/SmartRoads.git
-cd DjangoUnlinked/app/
+cd SmartRoads/app/
 pip3 install -r requirements.txt 
 sudo apt-get install python3-tk
 ```
