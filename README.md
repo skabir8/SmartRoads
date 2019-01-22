@@ -1,6 +1,6 @@
 # Smart Road
 
-## App Demo using Tensorflow on a news report video
+## App Demo using Tensorflow on a news report video to find potholes
 
 <p align="center"> <img src="demo.gif"/> </p>
 
