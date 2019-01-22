@@ -10,7 +10,9 @@
 
 ### Setting up vitural environment
 ```
-
+python3 -m venv env
+source env/bin/activate
+cd app
 ```
 
 ### Installing requirements
@@ -25,6 +27,7 @@ Download the weights from: https://drive.google.com/drive/folders/1npRY7FVNTBUod
 
 ### Running app
 ```
+cd app
 python3 app.py
 ```
 
