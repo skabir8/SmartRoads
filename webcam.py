@@ -10,8 +10,6 @@ from frontend import YOLO
 import json
 from pprint import pprint
 
-os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"]="0"
 cap = cv2.VideoCapture(0)
 
 def _main_():
@@ -24,7 +22,7 @@ def _main_():
     ###############################
     #   Make the model
     ###############################
-    yolo = YOLO(backend             = "Full Yolo",
+    yolo = YOLO(backend             = config['model']['backend'],
                 input_size          = config['model']['input_size'],
                 labels              = config['model']['labels'],
                 max_box_per_image   = config['model']['max_box_per_image'],
