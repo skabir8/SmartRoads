@@ -43,6 +43,9 @@ def _main_():
     ###############################
 
     while True:
+        frameId = int(round(vidcap.get(1)))
+        print(frameId)
+        
         # Capture frame-by-frame
         ret, frame = cap.read()
 
