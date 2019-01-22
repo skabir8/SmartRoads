@@ -49,7 +49,11 @@ def _main_():
         # Our operations on the frame come here
         boxes = yolo.predict(frame)
 
+        if (len(boxes) > 0):
+            print(boxes[0].get_score())
+
         frame2 = draw_boxes(frame, boxes, config['model']['labels'])
+
         # Display the resulting frame
         cv2.imshow('', frame2)
 
@@ -63,4 +67,3 @@ def _main_():
 # When everything done, release the capture
 if __name__ == '__main__':
     _main_()
-    cap = cv2.VideoCapture(0)
