@@ -43,13 +43,19 @@ class VideoCamera(object):
 
         if ret:
             ret, jpeg = cv2.imencode('.jpg', frame)
+
             boxes = self.yolo.predict(frame)
-            frame2 = draw_boxes(frame, boxes, self.config['model']['labels'])
-            self.last_recorded_time = self.curr_time
+
             if (len(boxes) > 0):
-                print(boxes[0].get_score())
+                frame2 = draw_boxes(frame, boxes, self.config['model']['labels'])
                 ret, jpeg = cv2.imencode('.jpg', frame2)
+
+                if self.curr_time - self.last_recorded_time >= self.report_interval and boxes[0].get_score() >= self.conf_threshold:
+                    print(boxes[0].get_score())
+                    self.last_recorded_time = self.curr_time
+
                 return jpeg.tobytes()
+
             return jpeg.tobytes()
 
         else:
