@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 
-import argparse
 import os
 import cv2
 import numpy as np
@@ -16,27 +15,7 @@ os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 cap = cv2.VideoCapture(0)
 
-argparser = argparse.ArgumentParser(
-    description='Train and validate YOLO_v2 model on any dataset')
-
-argparser.add_argument(
-    '-c',
-    '--conf',
-    help='path to configuration file')
-
-argparser.add_argument(
-    '-w',
-    '--weights',
-    help='path to pretrained weights')
-
-argparser.add_argument(
-    '-i',
-    '--input',
-    help='path to an image or an video (mp4 format)')
-
-#cap = cv2.VideoCapture(0)
-
-def _main_(args):
+def _main_():
     config_path  = "./config.json"
     weights_path = "./trained_wts.h5"
 
@@ -70,8 +49,6 @@ def _main_(args):
         # Our operations on the frame come here
         boxes = yolo.predict(frame)
 
-        print(dir(boxes))
-
         frame2 = draw_boxes(frame, boxes, config['model']['labels'])
         # Display the resulting frame
         cv2.imshow('', frame2)
@@ -85,6 +62,5 @@ def _main_(args):
 
 # When everything done, release the capture
 if __name__ == '__main__':
-    args = argparser.parse_args()
-    _main_(args)
+    _main_()
     cap = cv2.VideoCapture(0)
