@@ -14,9 +14,8 @@ def submit_form():
     coords = get_coords()
     lat = coords[0]
     long = coords[1]
-    print(lat)
-    print(long)
-
+    print('----------------------------------------------------------')
+    print("Found pothole at: " + "lat/long: "+ str([lat,long]))
     firstname = "John"
     lastname = "Doe"
 
@@ -47,16 +46,15 @@ def submit_form():
     }
 
     s.post(postlocation, data=payload)
-    print("first form completed")
 
 
 
     r = requests.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&key=AIzaSyD0EKYyK97KnMZWTDQTEovUbpM1rxmjzf8")
     data = json.loads(r.text)
-    print(data)
     address = data["results"][0]["address_components"]
     number = address[0]["long_name"]
     street = address[1]["long_name"]
+    zipcode = address[2]["long_name"]
     boro = address[3]["long_name"]
     boronum = 0
 
@@ -86,6 +84,9 @@ def submit_form():
     }
 
     s.post(postloc2, data=payload2)
-    print("second form completed")
-
-submit_form()
+    print("\n")
+    print("Location: " + number + " " + street + ", " + zipcode + ", " + boro)
+    print("\n")
+    print("Complaint Submission ID: " + payload2['__EVENTVALIDATION'] )
+    print('----------------------------------------------------------')
+#submit_form()
