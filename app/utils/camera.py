@@ -34,8 +34,8 @@ class VideoCamera(object):
         self.recordingThread = None
 
         # Reporting Variables
-        self.report_interval = 5.0
-        self.conf_threshold = 0.4
+        self.report_interval = 5.0 # time to wait before sending another report in seconds
+        self.conf_threshold = 0.4 # threshold for object to be considered a pothole (0.0-1.0)
 
     def __del__(self):
         self.cap.release()

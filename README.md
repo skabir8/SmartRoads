@@ -6,7 +6,14 @@
 
 [Watch the demo](https://drive.google.com/file/d/1AsgKN1kLrnYira_I0v6MDGABSI2Bhhk0/view)
 
-## Installing Requirements
+## Running app
+
+```
+
+```
+
+
+### Installing Requirements
 Install the necessary pre-requisites by
 
 ```
@@ -15,7 +22,6 @@ pip3 install -r requirements.txt
 
 Download the weights from: https://drive.google.com/drive/folders/1npRY7FVNTBUodMt-qD67A1rlCXYoMFMp and place into app/utils
 
-## Running app
 
 ```
 python3 app.py
