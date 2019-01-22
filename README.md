@@ -1,4 +1,4 @@
-# YOLOv3 Pothole Identifier
+# Smart Road
 
 ## How it Looks Like
 
