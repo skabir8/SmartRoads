@@ -1,10 +1,8 @@
 # Smart Road
 
-## How it Looks Like
+## Demo
 
-[![](https://puu.sh/CAsha/8e14886b6e.jpg)](https://drive.google.com/file/d/1AsgKN1kLrnYira_I0v6MDGABSI2Bhhk0/view)
-
-[Watch the demo](https://drive.google.com/file/d/1AsgKN1kLrnYira_I0v6MDGABSI2Bhhk0/view)
+![Demo](https://puu.sh/CAtwL/7193aa335c.gif)
 
 ## Running app
 
