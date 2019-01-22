@@ -1,9 +1,39 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
   <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Smart Roads</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstraptemplate/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
   </head>
+
   <body>
-    <h1>Smart Roads</h1>
-    <img src="{{ url_for('video_viewer') }}">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Smart Roads</a>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+      <br><br><br><br>
+      <img src="{{ url_for('video_viewer') }}">
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/bootstraptemplate/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/bootstraptemplate/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
   </body>
+
 </html>
