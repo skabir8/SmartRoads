@@ -45,11 +45,10 @@ def _main_():
     while True:
         frameId = int(round(vidcap.get(1)))
         print(frameId)
-        
+
         # Capture frame-by-frame
         curr_time = time.time()
         ret, frame = cap.read()
-<<<<<<< HEAD
         if curr_time - last_recorded_time >= 2.0:
             cv2.imshow('', frame)
             boxes = yolo.predict(frame)
@@ -67,20 +66,6 @@ def _main_():
             boxes = yolo.predict(frame)
             frame2 = draw_boxes(frame, boxes, config['model']['labels'])
             cv2.imshow('', frame2)
-=======
-
-        # Our operations on the frame come here
-        boxes = yolo.predict(frame)
-
-        if (len(boxes) > 0):
-            print(boxes[0].get_score())
-
-        frame2 = draw_boxes(frame, boxes, config['model']['labels'])
-
-        # Display the resulting frame
-        cv2.imshow('', frame2)
-
->>>>>>> 2669d4f9e8257ffae4f25a2187cfa283ddc87c51
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     cap.release()
