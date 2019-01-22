@@ -26,7 +26,8 @@ class VideoCamera(object):
         # Initialize video recording environment
         self.is_record = False
         self.out = None
-
+        yolo.load_weights(weights_path)
+        self.last_recorded_time = time.time()
         # Thread for recording
         self.recordingThread = None
 
