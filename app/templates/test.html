@@ -7,7 +7,29 @@
 <button id="snap" class="sexyButton">Snap Photo</button>
 <canvas id="canvas" width="640" height="480"></canvas>
 
+
+<p id="geoinfo"></p>
+
+<button onclick="getLocation()">Show Location</button>
+<p id="geoinfo"></p>
+
 <script>
+
+		var x = document.getElementById("geoinfo");
+
+		function getLocation() {
+		  if (navigator.geolocation) {
+		    navigator.geolocation.getCurrentPosition(showPosition);
+		  } else {
+		    x.innerHTML = "Geolocation is not supported by this browser.";
+		  }
+		}
+
+		function showPosition(position) {
+		x.innerHTML = "Latitude: " + position.coords.latitude +
+		"<br>Longitude: " + position.coords.longitude;
+		}
+
 
 		// Put event listeners into place
 		window.addEventListener("DOMContentLoaded", function() {
