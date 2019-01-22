@@ -9,16 +9,16 @@
 ## Installing Requirements
 Go into app and type into console
 
-'''
+```
 pip3 install -r requirements.txt
-'''
+```
 
 Download the weights from: https://drive.google.com/drive/folders/1npRY7FVNTBUodMt-qD67A1rlCXYoMFMp and place into app/utils
 
 ## Running app
 
-'''
+```
 python3 app.py
-'''
+```
 
 Once you open the flask app in your browser, it should take some time to set up the YOLO system and the camera.
