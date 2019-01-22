@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 
-import argparse
 import os
 import cv2
 import numpy as np
@@ -16,29 +15,9 @@ os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 cap = cv2.VideoCapture(0)
 
-argparser = argparse.ArgumentParser(
-    description='Train and validate YOLO_v2 model on any dataset')
-
-argparser.add_argument(
-    '-c',
-    '--conf',
-    help='path to configuration file')
-
-argparser.add_argument(
-    '-w',
-    '--weights',
-    help='path to pretrained weights')
-
-argparser.add_argument(
-    '-i',
-    '--input',
-    help='path to an image or an video (mp4 format)')
-
-#cap = cv2.VideoCapture(0)
-
-def _main_(args):
-    config_path  = "/home/shariar/Desktop/potholes-detection/config.json"
-    weights_path = "/home/shariar/Desktop/potholes-detection/trained_wts.h5"
+def _main_():
+    config_path  = "./config.json"
+    weights_path = "./trained_wts.h5"
 
 
     with open(config_path) as config_buffer:
@@ -64,9 +43,13 @@ def _main_(args):
     ###############################
     last_recorded_time = time.time()
     while True:
+        frameId = int(round(vidcap.get(1)))
+        print(frameId)
+        
         # Capture frame-by-frame
         curr_time = time.time()
         ret, frame = cap.read()
+<<<<<<< HEAD
         if curr_time - last_recorded_time >= 2.0:
             cv2.imshow('', frame)
             boxes = yolo.predict(frame)
@@ -84,6 +67,20 @@ def _main_(args):
             boxes = yolo.predict(frame)
             frame2 = draw_boxes(frame, boxes, config['model']['labels'])
             cv2.imshow('', frame2)
+=======
+
+        # Our operations on the frame come here
+        boxes = yolo.predict(frame)
+
+        if (len(boxes) > 0):
+            print(boxes[0].get_score())
+
+        frame2 = draw_boxes(frame, boxes, config['model']['labels'])
+
+        # Display the resulting frame
+        cv2.imshow('', frame2)
+
+>>>>>>> 2669d4f9e8257ffae4f25a2187cfa283ddc87c51
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     cap.release()
@@ -91,6 +88,4 @@ def _main_(args):
 
 # When everything done, release the capture
 if __name__ == '__main__':
-    args = argparser.parse_args()
-    _main_(args)
-    cap = cv2.VideoCapture(0)
+    _main_()
