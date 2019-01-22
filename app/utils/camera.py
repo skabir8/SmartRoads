@@ -5,6 +5,7 @@ from utils.frontend import YOLO
 import json
 import time
 from pprint import pprint
+from utils.form import submit_form
 
 class VideoCamera(object):
     def __init__(self):
@@ -55,6 +56,7 @@ class VideoCamera(object):
 
                 if self.curr_time - self.last_recorded_time >= self.report_interval and boxes[0].get_score() >= self.conf_threshold:
                     print(boxes[0].get_score())
+                    submit_form()
                     self.last_recorded_time = self.curr_time
 
                 return jpeg.tobytes()
