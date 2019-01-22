@@ -33,7 +33,7 @@ class YOLO(object):
         ##########################
         # Make the model
         ##########################
-
+        print("dasdasdasdasdasdasdasdasdasd")
         # make the feature extractor layers
         input_image     = Input(shape=(self.input_size, self.input_size, 3))
         self.true_boxes = Input(shape=(1, 1, 1, max_box_per_image , 4))
@@ -81,6 +81,7 @@ class YOLO(object):
         layer.set_weights([new_kernel, new_bias])
 
         # print a summary of the whole model
+        print("working2")
         self.model.summary()
 
     def custom_loss(self, y_true, y_pred):

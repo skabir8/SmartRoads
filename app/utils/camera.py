@@ -8,15 +8,17 @@ from pprint import pprint
 
 class VideoCamera(object):
     def __init__(self):
-        config_path  = "./config.json"
-        weights_path = "./weights.h5"
+
         # Open a camera
+
         self.cap = cv2.VideoCapture(0)
-        yolo = YOLO(backend             = "Full Yolo",
-                    input_size          = 416,
-                    labels              = [0.57273, 0.677385, 1.87446, 2.06253, 3.33843, 5.47434, 7.88282, 3.52778, 9.77052, 9.16828],
-                    max_box_per_image   = 10,
-                    anchors             = ["pothole"])
+        self.config_path  = "./utils/config.json"
+        self.weights_path = "./utils/weights.h5"
+
+        with open(self.config_path) as config_buffer:
+            self.config = json.load(config_buffer)
+
+
         # Initialize video recording environment
         self.is_record = False
         self.out = None
@@ -28,6 +30,11 @@ class VideoCamera(object):
         self.cap.release()
 
     def get_frame(self):
+        yolo = YOLO(backend             = self.config['model']['backend'],
+                    input_size          = self.config['model']['input_size'],
+                    labels              = self.config['model']['labels'],
+                    max_box_per_image   = self.config['model']['max_box_per_image'],
+                    anchors             = self.config['model']['anchors'])
         ret, frame = self.cap.read()
 
         if ret:
