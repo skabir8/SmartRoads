@@ -1,15 +1,21 @@
 import requests
 import json
 
-
-firstname = "Shariar"
-lastname = "Kabir"
+def get_coords():
+    r = requests.get("https://ipinfo.io/loc")
+    coords = r.content[:-1]
+    x = coords[:7].decode("utf-8")
+    y = coords[8:].decode("utf-8")
+    return [x,y]
 
 
 def submit_form():
 
-    lat = "40.8320058"
-    long = "-73.87064409999999"
+    coords = get_coords()
+    lat = coords[0]
+    long = coords[1]
+    print(lat)
+    print(long)
 
     firstname = "John"
     lastname = "Doe"
@@ -47,6 +53,7 @@ def submit_form():
 
     r = requests.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + "&key=AIzaSyD0EKYyK97KnMZWTDQTEovUbpM1rxmjzf8")
     data = json.loads(r.text)
+    print(data)
     address = data["results"][0]["address_components"]
     number = address[0]["long_name"]
     street = address[1]["long_name"]
@@ -59,7 +66,6 @@ def submit_form():
     if(boro == "Queens"):
         boronum = 3
 
-    print(boronum)
 
     postloc2 = "http://a841-dotvweb01.nyc.gov/Potholeform/ViewController/LocationValidation.aspx?action=create"
 
