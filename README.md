@@ -8,26 +8,27 @@
 
 ## Running app
 
+### Setting up vitural environment
 ```
 
 ```
 
-
-### Installing Requirements
+### Installing requirements
 Install the necessary pre-requisites by
 
 ```
 pip3 install -r requirements.txt
 ```
 
+### Downloading weights
 Download the weights from: https://drive.google.com/drive/folders/1npRY7FVNTBUodMt-qD67A1rlCXYoMFMp and place into app/utils
 
-
+### Running app
 ```
 python3 app.py
 ```
 
-Once you open the flask app in your browser, it should take some time to set up the YOLO system and the camera.
+Once you open the flask app in your browser, there is a brief delay to set up the YOLO system and the camera.
 
 ## About
 This application uses Tensorflow and Darknet to create weight files for a YOLO system that identifies potholes in real time via the camera. After recognizing a pothole and passing a identification threshold, it submits a pothole ticket to 311 to be fixed.
