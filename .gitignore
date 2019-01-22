@@ -114,5 +114,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-trained_wts.h5
+weights.h5
 full_yolo_backend.h5

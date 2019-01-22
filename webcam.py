@@ -9,7 +9,6 @@ from utils import draw_boxes
 from frontend import YOLO
 import json
 from pprint import pprint
-import time
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
@@ -17,8 +16,7 @@ cap = cv2.VideoCapture(0)
 
 def _main_():
     config_path  = "./config.json"
-    weights_path = "./trained_wts.h5"
-
+    weights_path = "./weights.h5"
 
     with open(config_path) as config_buffer:
         config = json.load(config_buffer)
