@@ -41,33 +41,41 @@ def _main_():
     ###############################
     #   Predict bounding boxes
     ###############################
+
     last_recorded_time = time.time()
+
     while True:
-        frameId = int(round(vidcap.get(1)))
-        print(frameId)
+        curr_time = time.time()
 
         # Capture frame-by-frame
-        curr_time = time.time()
         ret, frame = cap.read()
+
+        # checks if 2 or more seconds have passed since last [placeholder]
         if curr_time - last_recorded_time >= 2.0:
             cv2.imshow('', frame)
             boxes = yolo.predict(frame)
+
+            # [placeholder for api call]
             if (len(boxes) > 0):
-                b = boxes[0]
-                s = b.get_score()
-                data = [b.c, b.score, s]
-                pprint(data)
+                print(boxes[0].get_score())
+
             frame2 = draw_boxes(frame, boxes, config['model']['labels'])
+
             # Display the resulting frame
             cv2.imshow('', frame2)
+
+            # Stores last time frame was drawn
             last_recorded_time = curr_time
         else:
             cv2.imshow('', frame)
             boxes = yolo.predict(frame)
             frame2 = draw_boxes(frame, boxes, config['model']['labels'])
             cv2.imshow('', frame2)
+
+        # press q to quit
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
     cap.release()
     cv2.destroyAllWindows()
 
