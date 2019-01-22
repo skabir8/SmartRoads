@@ -19,7 +19,7 @@ class VideoCamera(object):
         with open(self.config_path) as config_buffer:
             self.config = json.load(config_buffer)
 
-        self.yolo = YOLO(backend             = self.config['model']['backend'],
+        self.yolo = YOLO(backend            = self.config['model']['backend'],
                         input_size          = self.config['model']['input_size'],
                         labels              = self.config['model']['labels'],
                         max_box_per_image   = self.config['model']['max_box_per_image'],
