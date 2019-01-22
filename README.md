@@ -7,7 +7,7 @@
 [Watch the demo](https://drive.google.com/file/d/1AsgKN1kLrnYira_I0v6MDGABSI2Bhhk0/view)
 
 ## Installing Requirements
-Go into app and type into console
+Install the necessary pre-requisites by
 
 ```
 pip3 install -r requirements.txt
