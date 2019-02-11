@@ -32,3 +32,5 @@ This application uses Tensorflow and Darknet to create weight files for a YOLO s
 For this POC, it is build using flask and uses the computer's webcam to represent a phone or dashcam. 
 
 The next steps of this project would be to port this over to an actual mobile application and possibly integrated into hardware. Our end goal is to put this on car dash cams so every possible pothole can be tracked and submitted to better aid the city.
+
+Implementation for Raspberry Pi coming soon (very close!)...
