@@ -17,7 +17,7 @@ sudo apt-get install python3-tk
 ```
 
 ### Downloading weights
-Download the weights from: https://drive.google.com/drive/folders/1npRY7FVNTBUodMt-qD67A1rlCXYoMFMp and place into app/utils
+Weights are uploaded using [Git LFS](https://git-lfs.github.com/)
 
 ### Running app 
 ```
